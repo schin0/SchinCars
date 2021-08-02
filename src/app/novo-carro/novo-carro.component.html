@@ -1,0 +1,86 @@
+<form [formGroup]="novoCarro">
+    <div id="form">       <div id="inputs">
+
+        <!-- Input do nome do carro -->
+        <mat-form-field appearance="outline">
+            <mat-label>Qual o nome do carro?</mat-label>
+            <input matInput formControlName="nome">
+            <mat-icon matSuffix>directions_car</mat-icon>
+        </mat-form-field>
+
+        <!-- Input do estado -->
+        <mat-form-field appearance="fill">
+            <mat-label>Escolha um estado</mat-label>
+            <mat-select formControlName="estado" (selectionChange)="buscaCidade(novoCarro.value.estado)">
+                  <mat-option [value]="estado" *ngFor="let estado of siglas">
+                    {{estado.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Input das cidades -->
+          <mat-form-field appearance="fill" *ngIf="novoCarro.value.estado">
+            <mat-label>Escolha uma cidade</mat-label>
+            <mat-select formControlName="cidade">
+                  <mat-option [value]="cidade" *ngFor="let cidade of cidades">
+                    {{cidade}}
+                </mat-option>   
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Valor:</mat-label>
+            <input matInput formControlName="valor">
+            <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+
+
+        <!-- Input da descrição do restaurante -->
+        <mat-form-field appearance="outline">
+            <mat-label>Descreva o carro, fale sobre preços, atendimento e o que mais quiser</mat-label>
+            <textarea #message maxlength="512" matInput formControlName="descricao" rows="8"></textarea>
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-hint>{{message.value.length}} / 512</mat-hint>
+        </mat-form-field>
+
+    </div>
+    <!-- Div da imagem junto com o "rating" do restaurante -->
+    <div id="imagem-upload">
+
+        <!-- Botão que irá fazer o upload da imagem -->
+        <div>
+            <button type="button" id="anx" mat-flat-button (click)="fileInput.click()">
+                Anexar Imagem
+            </button>
+            <input hidden (change)="onFileSelect($event)" #fileInput type="file" id="File">
+        </div>
+
+        <!-- Div que dará display da imagem -->
+        <div id="imagem-content" (click)="fileInput.click()">
+              <mat-icon *ngIf="!selectedFile">photo_camera</mat-icon>
+              <img *ngIf="selectedFile" [src]="selectedFile" width="300">
+        </div>
+
+        <!-- "rating" de estrelas do restaurante -->
+        <div id="rating">
+              <button mat-icon-button class="ic" *ngFor="let ratingId of ratingArr; index as i"
+                (click)="onClick(i+1)">
+                <mat-icon>
+                    {{showIcon(i)}}
+                </mat-icon>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Salvar as informações -->
+<div id="acoes">
+    <div>
+        <button mat-flat-button (click)="salvarCarro()">
+            Salvar
+        </button>
+    </div>
+</div>
+
+</form>

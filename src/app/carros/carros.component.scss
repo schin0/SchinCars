@@ -1,0 +1,75 @@
+section {
+  padding: 0;
+  background-color: #929292;
+  
+  header {
+    padding: 16px;
+    background: #000000;
+    box-shadow: 1px 1px 4px #7B1FA2;
+    color: #fff;
+    mat-menu{
+      background-color: #69F0AE;
+    }
+  }
+  
+  #carros {
+    width: 90%;
+    margin: auto;
+    margin-top: 16px;
+    
+    h1 {
+      font-weight: 600;
+      color: #330e42;
+      text-shadow: 1px 1px 1px #7B1FA2;
+    }
+    
+    mat-form-field {
+      width: 60%;
+    }
+    
+    #carros-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      background-color: #929292; 
+      
+      mat-card {
+        background: #330e42;
+        margin: 0px 12px 16px 0px;
+        width: 30%;
+        box-shadow: 1px 1px 5px #7B1FA2;
+        
+        mat-card-subtitle{
+          height: 50px;
+          align-items: center;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          
+          p {
+            margin: 0;
+            margin: 5px;
+          }
+        }
+        
+        #toBottom{
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
+}
+
+span {
+  border: 0px !important;
+}

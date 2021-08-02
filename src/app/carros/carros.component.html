@@ -1,0 +1,52 @@
+<section>
+  <header>
+      <button mat-button [matMenuTriggerFor]="menu">Opções</button>
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="novoCarro()">
+              <mat-icon>add</mat-icon>
+              Cadastrar Carro
+          </button>
+          <button mat-menu-item (click)="sair()">
+              <mat-icon>logout</mat-icon>
+              Sair
+          </button>
+      </mat-menu>
+  </header>
+
+  <div id="carros">
+      <h1>Carros</h1>
+      <mat-form-field appearance="outline">
+        <mat-label>Busque por uma cidade ou nome de um carro</mat-label>
+        <input matInput placeholder='Tente "Jundiaí" ou talvez "Ferrari"' [(ngModel)]="toSearch" [ngModelOptions]="{standalone: true}">
+        <mat-icon matSuffix style="color: #7B1FA2;">search</mat-icon>
+      </mat-form-field>
+  
+      <section id="carros-cards">
+        <mat-card *ngFor="let carro of carros | filtroCar: toSearch">
+          <mat-card-title>
+            {{ carro.nome }}
+          </mat-card-title>
+          <div style="display: flex; justify-content: center;
+          align-items: center;">
+          <img [src]="carro.downloadUrl" width="250" style="border-radius: 10px;">
+          </div>
+          <p>{{ carro.valor }}</p>
+          <mat-card-subtitle>
+            {{ carro.descricao }}
+          </mat-card-subtitle>
+          <p style="font-size: 10px; text-align: left; font-weight: 600; color: gray;">
+            Criado por: {{carro.autorCarro.displayName}} em {{ carro.criadoEm.seconds*1000 | date: "MMMM d, y, h:mm:ss a":"IST":"pt"}}
+          </p>
+          <div id="toBottom">
+            <div>
+              <mat-icon>location_on</mat-icon>
+              <p>{{ carro.cidade }}, {{ carro.estado.nome }}</p>
+            </div>
+            <button mat-flat-button color="primary" (click)="abrirCarro(carro)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      </section>
+  </div>
+</section>

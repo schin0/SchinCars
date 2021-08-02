@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "schincars-2021": {
+      "hosting": {
+        "schinCars": [
+          "schincars-2021"
+        ]
+      }
+    }
+  }
+}
