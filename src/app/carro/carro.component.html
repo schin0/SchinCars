@@ -18,10 +18,11 @@
         <div id="autor">
           <img [src]="carro.autorCarro.photoURL" width="60">
           <p>Postado por {{ carro.autorCarro.displayName }}</p>
+          <p>Contato: {{ carro.contato }}</p>
         </div>
       </div>
     </div>
-  <img [src]="carro.downloadUrl" width="500" id="restaurante-img">
+  <img [src]="carro.downloadUrl" width="400" id="restaurante-img">
   <p>
     O carro se encontra em {{ carro.cidade }} - {{ carro.estado.nome }}
   </p>

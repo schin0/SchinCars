@@ -26,6 +26,7 @@ export class NovoCarroComponent implements OnInit {
     cidade: new FormControl('', Validators.required),
     descricao: new FormControl('', Validators.required),
     valor: new FormControl('', Validators.required),
+    contato: new FormControl('', Validators.required),
   });
 
   constructor(
@@ -87,6 +88,7 @@ export class NovoCarroComponent implements OnInit {
       cidade: this.novoCarro.value.cidade,
       descricao: this.novoCarro.value.descricao,
       valor: this.novoCarro.value.valor,
+      contato: this.novoCarro.value.contato,
       autorCarro: this.data.usuario,
       criadoEm: new Date(),
       estrelas: this.rating
